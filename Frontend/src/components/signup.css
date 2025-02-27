@@ -1,0 +1,101 @@
+/* Overall container with background image */
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+     background: url("https://img.freepik.com/vector-gratis/fondo-abstracto-formas-azules_698452-954.jpg?semt=ais_hybrid") no-repeat center center; 
+    background-size: cover; /* This ensures the background image covers the entire area */
+}
+
+/* Form and image container */
+.signup-box {
+    display: flex;
+    width: 60%;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form section */
+.form-section {
+    width: 50%;
+    padding: 40px;
+    text-align: center;
+}
+
+.form-section h2 {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;  /* Dark gray for better contrast */
+}
+
+/* Input fields */
+form input {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+/* Signup button */
+button {
+    width: 96px;
+    padding: 12px;
+    background: #6CB4EE;  /* Orange button for a better look */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #2a52be; /* Darker orange on hover */
+}
+
+/* Login link */
+.login-link {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #2a52be;
+    cursor: pointer;
+}
+.alert-box {
+    background-color: #f44336; /* Red warning box */
+    color: white;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+/* Image section */
+.image-section {
+    width: 50%;
+    height: auto;
+    background: url("/Users/ganapaneni/Desktop/Web/React/end front/src/components/image2.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .signup-box {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    .form-section, .image-section {
+        width: 100%;
+    }
+
+    .image-section {
+        height: 250px;
+    }
+}

@@ -1,0 +1,158 @@
+/* Full-page background styling */
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    background-color: #f8f9fa;
+    background-size: cover;
+}
+
+/* Sidebar - keeping as is with minor adjustments */
+.sidebar {
+    width: 60px;
+    background: linear-gradient(180deg, #0a2463, #1e50a2);
+    color: white;
+    height: 100vh;
+    transition: width 0.4s ease-in-out;
+    padding-top: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    box-shadow: 3px 0 8px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+}
+
+.sidebar.open {
+    width: 220px;
+}
+
+/* Sidebar menu icon */
+.sidebar .menu-icon {
+    font-size: 26px;
+    display: block;
+    text-align: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+    color: white;
+}
+
+.sidebar .menu-icon:hover {
+    color: #6CB4EE;
+}
+
+/* Sidebar list */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar ul li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s, padding-left 0.3s;
+}
+
+.sidebar ul li:hover {
+    background: rgba(255, 255, 255, 0.2);
+    padding-left: 20px;
+}
+
+.sidebar ul li svg {
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+/* Main content - updated to match App.css style */
+.main-content {
+    flex-grow: 1;
+    margin-left: 60px;
+    display: flex;
+    flex-direction: column;
+    width: calc(100% - 60px);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header - updated to match App.css style */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    color: #4f46e5;
+    background: white;
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Welcome text - updated to match App.css style */
+.header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0;
+    color: #4f46e5;
+}
+
+/* Profile Settings button - updated to match App.css style */
+.profile-btn {
+    padding: 8px;
+    background: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    transition: background 0.3s;
+}
+
+.profile-btn:hover {
+    background: #3730a3;
+}
+
+/* Dashboard content area - updated to match App.css style */
+.content-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 40px;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Adding text styling for content area */
+.content-area p {
+    font-size: 1.25rem;
+    color: #4f46e5;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    text-align: center;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .content-area p {
+        font-size: 1rem;
+        padding: 15px;
+    }
+}

@@ -1,0 +1,133 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+  background-color: #f8f9fa;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Home page specific styles */
+.home-page .container1 {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header styles */
+.home-page .header1 {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: fixed; /* Keeps the navbar fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000; /* Ensures it stays above other elements */
+  padding: 15px 0;
+}
+
+.home-page .nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-page .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+/* Welcome section */
+.home-page .welcome-section {
+  padding: 100px 20px;
+  text-align: left;
+  background-color: #f8f9fa;
+  min-height: calc(100vh - 70px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+/* Container for text */
+.home-page .welcome-section .container {
+  max-width: 600px;
+}
+
+/* Welcome text */
+.home-page .welcome-section .welcome-text {
+  font-size: 1.25rem;
+  color: #4f46e5;
+  padding: 20px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Image overlay */
+.home-page .welcome-section .image-overlay {
+  width: 470px;
+  height: auto;
+}
+
+.home-page .welcome-section .image-overlay img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Nav buttons in header */
+.home-page .nav-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.home-page .nav-buttons button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.home-page .nav-buttons .sign-in {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+}
+
+.home-page .nav-buttons .sign-up {
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .home-page .welcome-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .home-page .welcome-section .image-overlay {
+    margin-top: 20px;
+    width: 80%;
+  }
+
+  .home-page .welcome-section h1 {
+    font-size: 2rem;
+  }
+
+  .home-page .welcome-section p {
+    font-size: 1rem;
+  }
+}
