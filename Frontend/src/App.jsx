@@ -8,6 +8,11 @@ import Profile from "./components/Profile";
 import ProtectedRoute from "./components/ProtectedRoute";
 import ForgotPassword from "./components/ForgotPassword";
 import ResetPassword from "./components/ResetPassword";
+import Products from "./components/Products";
+import DynamicPricing from "./components/DynamicPricing";
+import Analytics from "./components/Analytics";
+import FeedbackForm from "./components/Userfeedback";
+import FeedbackSection from "./components/Feedbacksection";
 import "./App.css";
 
 const NavButtons = () => {
@@ -36,7 +41,7 @@ function HomePage() {
             <header className="header1">
                 <div className="container1">
                     <nav className="nav">
-                        <a href="/" className="logo">Dynamic Pricing</a>
+                        <a href="/" className="logo">DPIECA</a>
                         <NavButtons />
                     </nav>
                 </div>
@@ -48,6 +53,7 @@ function HomePage() {
                         Welcome to Dynamic Pricing Application. 
                         All-in-one pricing solution for your business needs.
                     </p>
+                    <FeedbackSection />
                 </div>
                 <div className="image-overlay">
                     <img src="https://img.freepik.com/premium-vector/market-research-studies-abstract-concept-vector-illustration_107173-24938.jpg" alt="Dynamic Pricing Illustration" />
@@ -69,6 +75,11 @@ function App() {
                 <Route element={<ProtectedRoute />}>
                     <Route path="/dashboard" element={<Dashboard />} />
                     <Route path="/profile" element={<Profile />} />
+                    <Route path="/products" element={<Products />} />
+                    <Route path="/pricing" element={<DynamicPricing />}/>
+                    <Route path="/analytics" element={<Analytics />}/>
+                    <Route path="/feedback" element={<FeedbackForm/>}/>
+
                 </Route>
             </Routes>
         </AuthProvider>

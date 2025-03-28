@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext";
-import { FaBars, FaBox, FaChartBar, FaCommentDots, FaSignOutAlt, FaUserCog } from "react-icons/fa";
+import { FaUserCog } from "react-icons/fa";
+import Sidebar from "./Sidebar";
 import "./Dashboard.css";
 
 const Dashboard = () => {
@@ -17,30 +18,11 @@ const Dashboard = () => {
     return (
         <div className="dashboard-container">
             {/* Sidebar */}
-            <div 
-                className={`sidebar ${isSidebarOpen ? "open" : ""}`} 
-                onMouseEnter={() => setIsSidebarOpen(true)} 
-                onMouseLeave={() => setIsSidebarOpen(false)}
-            >
-                <FaBars className="menu-icon" onClick={() => setIsSidebarOpen(!isSidebarOpen)} />
-                <ul>
-                    <li onClick={() => navigate("/products")}>
-                        <FaBox /> {isSidebarOpen && <span>Products</span>}
-                    </li>
-                    <li onClick={() => navigate("/pricing")}>
-                        <FaChartBar /> {isSidebarOpen && <span>Dynamic Pricing</span>}
-                    </li>
-                    <li onClick={() => navigate("/analytics")}>
-                        <FaChartBar /> {isSidebarOpen && <span>Analytics</span>}
-                    </li>
-                    <li onClick={() => navigate("/feedback")}>
-                        <FaCommentDots /> {isSidebarOpen && <span>Feedback</span>}
-                    </li>
-                    <li onClick={handleLogout}>
-                        <FaSignOutAlt /> {isSidebarOpen && <span>Logout</span>}
-                    </li>
-                </ul>
-            </div>
+            <Sidebar 
+                isSidebarOpen={isSidebarOpen} 
+                setIsSidebarOpen={setIsSidebarOpen} 
+                handleLogout={handleLogout}
+            />
 
             {/* Main Content */}
             <div className="main-content">

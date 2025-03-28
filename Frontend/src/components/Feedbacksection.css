@@ -1,0 +1,85 @@
+.feedback-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    background-color: #f8f9fa;
+  }
+  
+  .feedback-title {
+    text-align: center;
+    color: #4f46e5;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+  
+  .feedback-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .feedback-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .feedback-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .feedback-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  
+  .feedback-user {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .feedback-username {
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .feedback-email {
+    color: #6b7280;
+    font-size: 0.85rem;
+  }
+  
+  .feedback-rating {
+    display: flex;
+    gap: 2px;
+  }
+  
+  .feedback-text {
+    color: #4b5563;
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+  
+  .feedback-date {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    display: block;
+    text-align: right;
+  }
+  
+  .feedback-loading, .feedback-error {
+    text-align: center;
+    color: #4f46e5;
+    font-size: 1.2rem;
+    padding: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .feedback-grid {
+      grid-template-columns: 1fr;
+    }
+  }

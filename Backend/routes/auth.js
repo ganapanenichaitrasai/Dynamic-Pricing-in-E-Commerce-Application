@@ -3,21 +3,9 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
 const User = require("../models/user");
+const Feedback = require("../models/feedback");
+const authenticateUser = require("../middleware/authMiddleware");
 const router = express.Router();
-
-// Middleware to authenticate user
-const authenticateUser = (req, res, next) => {
-    const token = req.headers.authorization?.split(" ")[1];
-    if (!token) return res.status(401).json({ message: "Unauthorized" });
-
-    try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded;
-        next();
-    } catch (err) {
-        return res.status(401).json({ message: "Invalid token" });
-    }
-};
 
 // Get logged-in user details
 router.get("/profile", authenticateUser, async (req, res) => {
@@ -51,13 +39,13 @@ router.put("/profile", authenticateUser, async (req, res) => {
 
 // Signup route
 router.post("/signup", async (req, res) => {
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
     try {
         let user = await User.findOne({ username });
         if (user) return res.status(400).json({ message: "Username already exists" });
 
         const hashedPassword = await bcrypt.hash(password, 10);
-        user = new User({ username, email, password: hashedPassword });
+        user = new User({ username, email, password: hashedPassword, role: role || "user" });
         await user.save();
 
         res.status(201).json({ message: "User registered successfully" });
@@ -76,8 +64,8 @@ router.post("/login", async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return res.status(400).json({ message: "Invalid Credentials" });
 
-        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
-        res.json({ token, message: "Login successful" });
+        const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: "1h" });
+        res.json({ token, message: "Login successful", role: user.role });
     } catch (err) {
         res.status(500).json({ message: "Server Error" });
     }
@@ -145,6 +133,36 @@ router.get("/check-auth", async (req, res) => {
         res.status(401).json({ isAuthenticated: false });
     }
 });
+
+// Get all feedbacks (for dashboard)
+router.get("/feedbacks", async (req, res) => {
+    try {
+        const feedbacks = await Feedback.find().sort({ createdAt: -1 });
+        res.json(feedbacks);
+    } catch (err) {
+        res.status(500).json({ message: "Server Error" });
+    }
+});
+
+router.post("/feedback", authenticateUser, async (req, res) => {
+    try {
+        const user = await User.findById(req.user.userId);
+        if (!user) return res.status(404).json({ message: "User not found" });
+
+        const feedback = new Feedback({
+            username: user.username,
+            email: user.email,
+            feedback: req.body.feedback,
+            rating: req.body.rating
+        });
+
+        await feedback.save();
+        res.json({ message: "Feedback submitted successfully" });
+    } catch (err) {
+        res.status(500).json({ message: "Server Error" });
+    }
+});
+
 
 // Logout route
 router.post("/logout", (req, res) => {

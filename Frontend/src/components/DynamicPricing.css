@@ -1,0 +1,51 @@
+/* Table Styling */
+.table-container {
+    margin-top: 20px;
+    overflow-x: auto;
+}
+
+.table-container table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.table-container th,
+.table-container td {
+    padding: 12px 16px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+/* Header Row */
+.table-container thead tr {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+/* Alternating Row Colors */
+.table-container tbody tr:nth-child(odd) {
+    background-color: #ffffff; /* White */
+}
+
+.table-container tbody tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light Grey */
+}
+
+/* Hover Effect on Rows */
+.table-container tbody tr:hover {
+    background-color: #f1f1f1; /* Slightly darker grey on hover */
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    .table-container {
+        overflow-x: scroll;
+    }
+
+    .table-container th,
+    .table-container td {
+        padding: 8px 12px;
+    }
+}
